@@ -88,7 +88,8 @@ shinyUI(fluidPage(
   
     mainPanel(
       conditionalPanel(condition ="!output.fileUploaded & !output.modelUploaded",
-        h2("The purpose of this application is to provide a user-friendly tool to build a prediction model from omics datas.",align="center")
+        h2("The purpose of this application is to provide a user-friendly tool to build a prediction model from omics datas.",
+           align="center"),
   h4("check the box 'show helps for any further informations"),br(),br(),br(),
        
        
