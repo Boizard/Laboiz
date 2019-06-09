@@ -88,11 +88,13 @@ shinyUI(fluidPage(
   
     mainPanel(
       conditionalPanel(condition ="!output.fileUploaded & !output.modelUploaded",
-        h4("The purpose of this application is to calculate basics tests for omics datas. The datas needed for this application are numeric datas. Each individuals are part of one of two groups.
-        Tests select variables which are significatively different between the two groups.",align="center"),br(),
+        h2("The purpose of this application is to provide a user-friendly tool to build a prediction model from omics datas.",align="center")
+  h4("check the box 'show helps for any further informations"),br(),br(),br(),
        
-        h4("This application is developped in the 12th team of I2MC for internal used.",align="center"),br(),br(),br(),
-        fluidRow(column(6,imageOutput("image1")),column(2,imageOutput("image2")))
+       
+        fluidRow(column(6,imageOutput("image1")),column(2,imageOutput("image2"))),
+       br(),
+      h4("This application is developped in the 12th team of I2MC for internal used.",align="center")
 
       ),           
       conditionalPanel(condition ="output.fileUploaded || output.modelUploaded",
