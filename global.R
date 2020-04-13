@@ -27,6 +27,8 @@ usePackage("missForest")
 usePackage("Hmisc")
 usePackage("corrplot")
 usePackage("penalizedSVM")
+usePackage("DT")
+
 
 ##########################
 importfile<-function (datapath,extension,NAstring="NA",sheet=1,skiplines=0,dec=".",sep=","){
