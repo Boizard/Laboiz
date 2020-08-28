@@ -1,0 +1,1 @@
+The purpose of this application is to provide a user-friendly tool to build a prediction model from omics datas.
