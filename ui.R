@@ -111,13 +111,13 @@ shinyUI(fluidPage(
                 ),
                 column(7,imageOutput("image3",width = "100%")))
             ),
-              dataTableOutput("JDDlearn"),
+              dataTableOutput("JDDlearn")%>% withSpinner(color="#0dc5c1",type = 1),
               p(downloadButton("downloaddataJDDlearn","Download dataset"),align="center")
           ),
           tabPanel("Validation Data",
             conditionalPanel(condition ="output.fileUploadedval",
               br(),
-              dataTableOutput("JDDval"),
+              dataTableOutput("JDDval")%>% withSpinner(color="#0dc5c1",type = 1),
               p(downloadButton("downloaddataJDDval","Download dataset"),align="center")
             )
           ),
@@ -145,13 +145,13 @@ shinyUI(fluidPage(
                   
             fluidRow(
               column(7,textOutput("nvarselect",inline=T), "selected variables" ,
-                plotOutput("heatmapNA",width = "100%",height = 500) ,
+                plotOutput("heatmapNA",width = "100%",height = 500)%>% withSpinner(color="#0dc5c1",type = 1) ,
                 p(downloadButton("downloadplotheatmapNA","Download plot"),downloadButton('downloaddataheatmapNA', 'Download raw data'),align="center")
               ),
               column(5,br(),
                 conditionalPanel(condition ="input.help",helpText("The 3 curves present the number of variables selected according to the three possible options and the % of Na's selected"))
                 ,
-                plotOutput("plotNA",width = "100%",height = 500),
+                plotOutput("plotNA",width = "100%",height = 500)%>% withSpinner(color="#0dc5c1",type = 1),
                 p(downloadButton("downloadplotNA","Download plot"),downloadButton('downloaddataplotNA', 'Download raw data'),align="center")
               )
             ),
@@ -169,7 +169,7 @@ shinyUI(fluidPage(
             fluidRow(
               conditionalPanel(condition ="input.NAstructure==true", 
                 column(9,textOutput("nstructuredfeatures",inline=T),"structured features",
-                  plotOutput("heatmapNAstructure" ,width = "95%",height = 600),
+                  plotOutput("heatmapNAstructure" ,width = "95%",height = 600)%>% withSpinner(color="#0dc5c1",type = 1),
                   p(downloadButton("downloadstructur","Download plot"),downloadButton('downloaddatastructur', 'Download raw data'),align="center")),
                 column(3,br(),br(),
                   numericInput("maxvaluesgroupmin","The group with the minimum number of values has at most x% of values",value = 25,min = 0,max = 100,step = 5),
@@ -202,17 +202,17 @@ shinyUI(fluidPage(
                    hr(),
                    
                    fluidRow(
-                     column(5,plotOutput("plotheatmaptransformdata" ,width = "100%",height = 500),
+                     column(5,plotOutput("plotheatmaptransformdata" ,width = "100%",height = 500)%>% withSpinner(color="#0dc5c1",type = 1),
                             p(downloadButton("downloadplotheatmap","Download plot"),
                               downloadButton('downloaddataheatmap', 'Download raw data'),align="center")),  
                      
                      column(7,conditionalPanel(condition ="input.help",
                                                helpText("The mds (MultiDimensionnal Scaling) calcul the distances between the individuals (rows) and represented it on a plan as well as possible."),
                                                helpText("The aim of this graphic is to vizualized if the selection and transform parameters separate well the 2 groups.")),
-                            plotOutput("plotmds",height=500,width = "100%"),
+                            plotOutput("plotmds",height=500,width = "100%")%>% withSpinner(color="#0dc5c1",type = 1),
                       p(downloadButton("downloadplotmds","Download plot"),
                         downloadButton('downloaddatamds', 'Download raw data'),align="center"))),
-                  plotOutput("plothist",height=500,width = "100%"),
+                  plotOutput("plothist",height=500,width = "100%")%>% withSpinner(color="#0dc5c1",type = 1),
                   p(downloadButton("downloadplothist","Download plot"),
                     downloadButton('downloaddatahist', 'Download raw data'),align="center")
           ),
@@ -241,12 +241,12 @@ shinyUI(fluidPage(
               fluidRow(
                 column(6,
                   textOutput("nvarselect2",inline=T), "selected variables",
-                  plotOutput("volcanoplot" ,width = 500,height = 500),
+                  plotOutput("volcanoplot" ,width = 500,height = 500)%>% withSpinner(color="#0dc5c1",type = 1),
                   p(downloadButton("downloadvolcanoplot","Download plot"),downloadButton('downloaddatavolcanoplot', 'Download raw data'),align="center")
                 ),
                 column(6,
                   textOutput("nbdiff",inline=T), "differently expressed",
-                  plotOutput("barplottest" ,width = 400,height = 500),   
+                  plotOutput("barplottest" ,width = 400,height = 500)%>% withSpinner(color="#0dc5c1",type = 1),   
                   p(downloadButton("downloadbarplottest","Download plot"),downloadButton('downloaddatabarplottest', 'Download raw data'),align="center")
                 )
               )
@@ -255,7 +255,7 @@ shinyUI(fluidPage(
             conditionalPanel(condition ="input.SFtest==true  ",
               column(6,conditionalPanel(condition ="input.help",
                 helpText("Barplot presents the Results of shapiro and Fisher test")),
-                plotOutput("plottestSF"),
+                plotOutput("plottestSF")%>% withSpinner(color="#0dc5c1",type = 1),
               p(downloadButton("downloadplottestSF","Download plot"),downloadButton('downloaddatatestSF', 'Download raw data'),align="center"))
               
             )
@@ -294,12 +294,12 @@ shinyUI(fluidPage(
                 ),
               fluidRow(
                 column(6,
-                  plotOutput("plotmodeldecouvroc"),
+                  plotOutput("plotmodeldecouvroc")%>% withSpinner(color="#0dc5c1",type = 1),
                   p(downloadButton("downloadplotdecouvroc","Download plot"),
                     downloadButton('downloaddatadecouvroc', 'Download raw data'),align="center")
                 ),
                 column(4,
-                  plotOutput("plotmodeldecouvbp"),
+                  plotOutput("plotmodeldecouvbp")%>% withSpinner(color="#0dc5c1",type = 1),
                   p(downloadButton("downloadplotmodeldecouvbp","Download plot"),
                     downloadButton('downloaddatamodeldecouvbp', 'Download raw data'),align="center")
                 ),
@@ -322,11 +322,11 @@ shinyUI(fluidPage(
                 column(6,br(),downloadButton('downloaddatavalidation', 'Download validation data')))
               ), 
               fluidRow(
-                column(6,plotOutput("plotmodelvalroc"),
+                column(6,plotOutput("plotmodelvalroc")%>% withSpinner(color="#0dc5c1",type = 1),
                 p(downloadButton("downloadplotvalroc","Download plot"),
                   downloadButton('downloaddatavalroc', 'Download raw data'),align="center")
                 ),
-                column(4,plotOutput("plotmodelvalbp"),
+                column(4,plotOutput("plotmodelvalbp")%>% withSpinner(color="#0dc5c1",type = 1),
                 p(downloadButton("downloadplotmodelvalbp","Download plot"),
                   downloadButton('downloaddatamodelvalbp', 'Download raw data'),align="center")
                 ),
@@ -421,7 +421,7 @@ shinyUI(fluidPage(
                 p(actionButton("tunetest",h4("Test all models"),width=200),align="center")
               )
             ),
-            dataTableOutput("tabtestparameters"),
+            dataTableOutput("tabtestparameters")%>% withSpinner(color="#0dc5c1",type = 1),
             p(downloadButton("downloadtabtestparameters","Download dataset"),align="center")
           )
         )
