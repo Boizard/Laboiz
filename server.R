@@ -199,7 +199,7 @@ shinyServer(function(input, output,session) {
     di2<-dim(x = DATA()$VALIDATION)[2]  
   })  
 
-  #si erreur envoyÃÂ© pb import
+  #si erreur envoyÃÂÃÂ© pb import
   DATA<-reactive({
      importparameters<<-list("learningfile"=input$learningfile,"validationfile"=input$validationfile,"modelfile"=input$modelfile,"extension" = input$filetype,
                             "NAstring"=input$NAstring,"sheetn"=input$sheetn,"skipn"=input$skipn,"dec"=input$dec,"sep"=input$sep,
@@ -748,13 +748,16 @@ TESTPARAMETERS <- eventReactive(input$tunetest, {
 # outputOptions(output, 'testNAstructure', suspendWhenHidden=FALSE)
 
 output$tabtestparameters<-renderDataTable({
-  resparameters<-TESTPARAMETERS()
+  resparameters<<-TESTPARAMETERS()
   cbind(Names=rownames(resparameters),resparameters)},
   options = list(    "orderClasses" = F,
                      "responsive" = F,
-                     "pageLength" = 100,rowCallback = I('
-            function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {$("td:eq(1)", nRow).css("color", "red");}'
-                                                        )))
+                     "pageLength" = 100
+            #          ,rowCallback = I('
+            # function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {$("td:eq(1)", nRow).css("color", "red");}'
+                                                        # )
+            )
+            )
 
 output$downloadtabtestparameters <- downloadHandler(
   filename = function() { paste('dataset', '.',input$paramdowntable, sep='') },
